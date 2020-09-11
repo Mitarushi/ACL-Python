@@ -7,8 +7,8 @@ class DSU:
         self.parent_or_size = [-1] * n
 
     def merge(self, a: int, b: int) -> int:
-        assert 0 <= a <= self._n
-        assert 0 <= b <= self._n
+        assert 0 <= a < self._n
+        assert 0 <= b < self._n
         x, y = self.leader(a), self.leader(b)
         if x == y:
             return x
@@ -19,8 +19,8 @@ class DSU:
         return x
 
     def same(self, a: int, b: int) -> bool:
-        assert 0 <= a <= self._n
-        assert 0 <= b <= self._n
+        assert 0 <= a < self._n
+        assert 0 <= b < self._n
         return self.leader(a) == self.leader(b)
 
     def leader(self, a: int) -> int:
@@ -34,7 +34,7 @@ class DSU:
         return a
 
     def size(self, a: int) -> int:
-        assert 0 <= a <= self._n
+        assert 0 <= a < self._n
         return -self.parent_or_size[self.leader(a)]
 
     def groups(self) -> List[List[int]]:
